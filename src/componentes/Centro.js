@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Mostrar from './Mostrar';
 import Registar from './Registar';
 
-const Centro = () => {
+class Centro extends Component {
 
-    const toggleModal = (modal) => {
+    toggleModal(modal) {
         let currentState = modal.style.display;
-        
+
         // If modal is visible, hide it. Else, display it.
         if (currentState === 'none') {
             modal.style.display = 'block';
@@ -36,28 +36,30 @@ const Centro = () => {
         }
     }
 
-    const callModal1 = () => {
+    callModal1() {
         let modal = document.querySelector('#modal1');
-        toggleModal(modal);
+        this.toggleModal(modal);
     }
 
-    const callModal2 = () => {
+    callModal2() {
         let modal = document.querySelector('#modal2');
-        toggleModal(modal);
+        this.toggleModal(modal);
     }
 
-    return (
-        <div>
-            <div id="centerDiv">
-                <h2 style={{ textAlign: "center" }}>Factos Verídicos</h2>
-                <button id="showModalBtn" className="btn-show" onClick={() => { callModal1() }}>Mostrar</button>
-                <button id="addModalBtn" className="btn-show" onClick={() => { callModal2() }}>Adicionar</button>
-            </div>
+    render() {
+        return (
+            <div>
+                <div id="centerDiv">
+                    <h2 style={{ textAlign: "center" }}>Factos Verídicos</h2>
+                    <button id="showModalBtn" className="btn-show" onClick={() => { this.callModal1() }}>Mostrar</button>
+                    <button id="addModalBtn" className="btn-show" onClick={() => { this.callModal2() }}>Adicionar</button>
+                </div>
 
-            <Mostrar />
-            <Registar />
-        </div>
-    );
+                <Mostrar />
+                <Registar />
+            </div>
+        );
+    }
 }
 
 export default Centro;
